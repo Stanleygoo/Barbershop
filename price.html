@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Прайс-лист</title>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&amp;subset=cyrillic" rel="stylesheet">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="inner-page">
+    <header class="main-header">
+        <div class="container clearfix"><!--центровщик содержимого-->
+           <nav class="main-navigation">
+              <a href="index.html" class="logo-inner"><img src="img/barbershop.png" alt="logo"></a>
+               <ul>
+                   <li><a href="index.html">Главная</a></li>
+                   <li><a href="#">Информация</a></li>
+                   <li><a href="item.html">Новости</a></li>
+                   <li class="active"><span>Прайс-лист</span></li>
+                   <li><a href="shop.html">Магазин</a></li>
+                   <li><a href="#">Контакты</a></li>
+               </ul>
+           </nav> 
+           <div class="user-block">
+               <a class="login" href="#">Вход</a>
+           </div>
+         </div>
+     </header>
+     <main class="container clearfix">
+         <div class="breadcrumbs-price">
+             <h1>Прайс-лист</h1>
+             <ul class="breadcrumbs">
+                 <li><a href="#">Главная</a></li>
+                 <li class="current">Прайс-лист</li>
+             </ul>
+         </div>
+         <div class="inner-content">
+         <div class="title">
+             <h1>Истинно мужская классика</h1>
+         </div>
+         <div class="inner-columns clearfix">
+         <div class="inner-columns-left">
+             <h2>МЫ ИСПОЛЬЗУЕМ ТОЛЬКО<br>ЛУЧШИЕ СРЕДСТВА:</h2>
+                 <ul class="custom-list-1">
+                     <li>Baxter of California</li>
+                     <li>Mr Natty</li>
+                     <li>Suavecito</li>
+                     <li>Malin+Goetz</li>
+                 </ul>
+         </div>
+         <div class="inner-columns-right">
+             <h2>ЦЕНЫ НА УСЛУГИ<br>НАШИХ МАСТЕРОВ:</h2>
+             <table class="table">
+                 <tr>
+                     <td>Стрижка</td>
+                     <td>1500 р.</td>
+                 </tr>
+                 <tr>
+                     <td>Стрижка бороды</td>
+                     <td>500 р.</td>
+                 </tr>
+                 <tr>
+                     <td>Накрутка усов</td>
+                     <td>350 р.</td>
+                 </tr>
+             </table>
+         </div>
+         </div>
+         <div class="inner-columns clearfix">
+             <h2>НЕСКОЛЬКО СЛОВ О НАС:</h2>
+         <div class="inner-columns-left">
+             <p class="short-text">
+                 Наша парикмахерская занимается исключительно мужскими стрижками. Стрижка каждого клиента для нас - это  уникальная и продуманная до мелочей работа. Мы не работаем на количество, мы делаем качество.
+             </p>
+         </div>
+         <div class="inner-columns-right">
+             <p class="short-text">
+                 Наша мастерская расположена в центре города, поэтому сделать стильную стрижку можно в любое время, даже в обеденный перерыв. Здесь вы можете погрузиться в удобную для вас атмосферу, чувствовать себя комфортно и свободно!
+             </p>
+         </div>
+         </div>
+         </div>
+     </main>
+     <footer class="main-footer clearfix">
+        <div class="container">
+            <section class="footer-contacts">
+                 Барбершоп <q>Бородинский</q><br>
+                 Адрес: г. Санкт-Петербург, Б. Конюшенная, д. 19/8<br>
+                 Телефон: +7 (812) 666-02-66    
+            </section>
+            <section class="footer-social">
+                 <p>Давайте дружить!</p>
+                 <a class="social-btn social-btn-vk" href="#">Вконтакте</a>
+                 <a class="social-btn social-btn-fb" href="#">Фэйсбук</a>
+                 <a class="social-btn social-btn-inst" href="#">Инстаграм</a>
+            </section>
+            <section class="footer-copyright">
+                 <p>Разработано:</p>
+                 <a class="btn" href="http://htmlacademy.ru">HTML Academy</a>
+            </section>
+        </div>
+     </footer>
+     <div class="modal-content">
+      <div class="modal-content-close" title="Закрыть">Закрыть</div>
+      <h2 class="modal-content-title">Личный кабинет</h2>
+      <p>Введите пожалуйста свой логин и пароль.</p>
+
+      <form class="login-form" action="/echo" method="post">
+        <input type="text" class="icon-user" name="login" placeholder="Логин">
+        <input type="password" class="icon-password" name="password" placeholder="Пароль">
+
+        <input type="checkbox" name="remember" id="remember-me">
+        <label for="remember-me">Запомните меня</label>
+
+        <a href="#" class="restore">Я забыл пароль!</a>
+        <button type="submit" class="btn">Войти</button>
+      </form>
+    </div>
+<script>
+      var link = document.querySelector(".login");
+      var popup = document.querySelector(".modal-content");
+      var close = document.querySelector(".modal-content-close");
+      var form = popup.querySelector("form");
+      var login = popup.querySelector("[name=login]");
+      var password = popup.querySelector("[name=password]");
+      var storage = localStorage.getItem("login");
+
+      link.addEventListener("click", function(event) {
+        event.preventDefault();
+        popup.classList.add("modal-content-show");
+        if (storage) {
+          login.value = storage;
+          password.focus();
+        } else {
+          login.focus();
+        }
+      });
+
+      close.addEventListener("click", function(event) {
+        event.preventDefault();
+        popup.classList.remove("modal-content-show");
+      });
+
+      form.addEventListener("submit", function(event) {
+        if (!(login.value && password.value)) {
+          event.preventDefault();
+          popup.classList.remove("modal-error");
+          popup.classList.add("modal-error");
+        } else {
+          localStorage.setItem("login", login.value);
+        }
+      });
+
+      window.addEventListener("keydown", function(event) {
+        if (event.keyCode == 27) {
+          if (popup.classList.contains("modal-content-show")) {
+            popup.classList.remove("modal-content-show");
+          }
+        }
+      });
+    </script>
+    
+   
+ 
+</body>
+</html>
